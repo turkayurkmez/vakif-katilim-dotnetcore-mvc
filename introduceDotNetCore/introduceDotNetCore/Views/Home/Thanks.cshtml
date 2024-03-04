@@ -1,0 +1,13 @@
+﻿@model UserInfo
+
+
+    @if (Model.IsParticipate.Value)
+    {
+        <p>Davetiye eposta adresine gönderildi. Fuar alanında görüşürüz</p>
+        <p>@ViewBag.HotReload</p>
+    }
+    else
+    {
+        <p>Gelemeyaceğinize üzüldük :( </p>
+    }
+

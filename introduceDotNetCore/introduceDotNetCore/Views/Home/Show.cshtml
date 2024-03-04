@@ -1,0 +1,17 @@
+﻿
+@model ShowViewModel 
+
+
+    <ul>
+        @foreach (var company in Model.Companies)
+        {
+            <li>@company.Name</li>
+        }
+    </ul>
+    <ul>
+        @foreach (var country in Model.Countries)
+        {
+            <li>@country.Name</li>
+        }
+    </ul>
+

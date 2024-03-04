@@ -1,21 +1,20 @@
-﻿
-@{
-    Layout = null;
+﻿@model IEnumerable<Country>
+
+<p>@ViewBag.Country</p>
+@if (ViewBag.Day < 15)
+{
+    <p>Ayın ilk yarısı...</p>
 
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>@ViewBag.Country</p>
-    @if (ViewBag.Day < 15)
+<ul>
+    @foreach (var item in Model)
     {
-        <p>Ayın ilk yarısı...</p>
+        <li>@item.Name</li>
     }
-</body>
-</html>
+</ul>
+
+<p>
+    Ücretsiz fuar davetiyesi için <a asp-controller="Home" asp-action="Invite" class="btn btn-success"
+    > tıklayınız...</a>
+</p>
+

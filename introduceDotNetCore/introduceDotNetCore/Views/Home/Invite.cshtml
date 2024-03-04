@@ -1,0 +1,28 @@
+﻿@model UserInfo
+
+
+<form asp-action="Invite">
+    <div>
+        <input asp-for="Name" placeholder="Adınız" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <input asp-for="Email" placeholder="Eposta" class="form-control" />
+        <span asp-validation-for="Email"></span>
+
+    </div>
+    <div>
+        <input asp-for="Age" placeholder="Yaşınız" class="form-control" />
+    </div>
+    <div>
+        <select asp-for="IsParticipate" class="form-select">
+            <option value="False">Gelmeyeceğim</option>
+            <option value="True">Geleceğim</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Gönder</button>
+    </div>
+</form>
+
+

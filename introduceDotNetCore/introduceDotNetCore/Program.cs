@@ -10,7 +10,7 @@ var app = builder.Build();
 
 app.Logger.LogInformation(value);
 
-
+app.UseStaticFiles();
 
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
