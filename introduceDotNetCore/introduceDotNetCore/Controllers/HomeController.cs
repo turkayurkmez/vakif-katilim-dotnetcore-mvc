@@ -60,7 +60,7 @@ namespace introduceDotNetCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.HotReload = "Action";
+                ViewBag.HotReload = "Değiştirdim";
                 return View("Thanks", userInfo);
             }
             return View();
