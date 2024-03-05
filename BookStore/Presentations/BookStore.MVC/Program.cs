@@ -1,7 +1,12 @@
+using BookStore.Infrastructure.DataAcess.Repositories;
+using BookStore.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookRepository, FakeBookRepository>();
 
 var app = builder.Build();
 
@@ -13,12 +18,20 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();//.UseStaticFiles().UseRouting().UseAuthorization();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+
+app.MapControllerRoute(
+    name: "pagination",
+    pattern: "Sayfa{page}",
+    defaults: new { controller = "Home", action = "Index", page = 1 }
+
+    );
 
 app.MapControllerRoute(
     name: "default",

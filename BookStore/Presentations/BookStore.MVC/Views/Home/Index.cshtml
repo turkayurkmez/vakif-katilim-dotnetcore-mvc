@@ -1,8 +1,32 @@
-﻿@{
+﻿@model IEnumerable<BookDisplayResponse>
+@{
     ViewData["Title"] = "Home Page";
+    var active = string.Empty;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-2">
+               <partial name="_BookSummary" model="book"></partial>
+            </div>
+        }
+    </div>
+</div>
+
+<nav>
+    <ul class="pagination pagination-lg">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            active = i == ViewBag.ActivePage ? "active" : "";
+            <li class="page-item @active"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@i">@i</a></li>
+        }
+        
+    </ul>
+</nav>

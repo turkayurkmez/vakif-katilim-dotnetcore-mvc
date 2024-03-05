@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\Infrastructure\eshop.Infrastructure.DataAcess\BookStore.Infrastructure.DataAcess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataTransferObjects\Requests\" />
+  </ItemGroup>
+
 </Project>
