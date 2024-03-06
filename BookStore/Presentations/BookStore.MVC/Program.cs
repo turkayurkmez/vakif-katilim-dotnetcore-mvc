@@ -1,5 +1,7 @@
+using BookStore.Infrastructure.DataAcess.Data;
 using BookStore.Infrastructure.DataAcess.Repositories;
 using BookStore.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddScoped<IGenreRepository, FakeGenreRepository>();
 
 
 builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(3));
+
+var connectionString = builder.Configuration.GetConnectionString("db");
+builder.Services.AddDbContext<BookStoreDbContext>(builder => builder.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
