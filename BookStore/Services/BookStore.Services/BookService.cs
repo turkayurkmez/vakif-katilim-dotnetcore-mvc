@@ -18,10 +18,11 @@ namespace BookStore.Services
             _bookRepository = bookRepository;
         }
 
-        public IEnumerable<BookDisplayResponse> GetBooks()
+        public IEnumerable<BookDisplayResponse> GetBooks(int? genreId = null)
         {
 
-            var books = _bookRepository.GetAllWithEnumerable();
+            var books = genreId == null ? _bookRepository.GetAllWithEnumerable() :
+                                            _bookRepository.GetBooksByGenre(genreId.Value);
             var response = books.Select(b => new BookDisplayResponse
             {
                 Author = b.Author,

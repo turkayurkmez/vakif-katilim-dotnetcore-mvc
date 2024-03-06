@@ -11,16 +11,21 @@ namespace BookStore.Infrastructure.DataAcess.Repositories
     {
         private List<Book> books = new List<Book>()
             {
-                new(){ Id=1, Title = "Kırmızı Karma", Author="Christopher Grange", Description="Gerilim", Price=100, DiscountRate=0.05m},
-                new(){ Id=2, Title = "Kitap 2", Author="Yazar 1", Description="Açıklama 1", Price=150, DiscountRate=0.05m},
-                new(){ Id=3, Title = "Kitap 3", Author="Yazar 3", Description="Açıklama 3", Price=120, DiscountRate=0.05m},
-                new(){ Id=4, Title = "Kitap 4", Author="Yazar 4", Description="Açıklama 4", Price=170, DiscountRate=0.05m},
+                new(){ Id=1, Title = "Kırmızı Karma", Author="Christopher Grange", Description="Gerilim", Price=100, DiscountRate=0.05m, GenreId=1},
+                new(){ Id=2, Title = "Kitap 2", Author="Yazar 1", Description="Açıklama 1", Price=150, DiscountRate=0.05m, GenreId=2},
+                new(){ Id=3, Title = "Kitap 3", Author="Yazar 3", Description="Açıklama 3", Price=120, DiscountRate=0.05m, GenreId=3},
+                new(){ Id=4, Title = "Kitap 4", Author="Yazar 4", Description="Açıklama 4", Price=170, DiscountRate=0.05m, GenreId=1},
 
 
             };
         public IEnumerable<Book> GetAllWithEnumerable()
         {
             return books;
+        }
+
+        public IEnumerable<Book> GetBooksByGenre(int genreId)
+        {
+            return books.Where(b => b.GenreId == genreId);
         }
 
         public IEnumerable<Book> Search(string name)

@@ -16,6 +16,7 @@ namespace BookStore.Common.Entities
         public decimal DiscountRate { get; set; }
         public string ImageUrl { get; set; } = "https://i.dr.com.tr/cache/154x170-0/originals/0002103875001-1.jpg";
 
+        public int GenreId { get; set; }
 
 
         public int Stock { get; set; }

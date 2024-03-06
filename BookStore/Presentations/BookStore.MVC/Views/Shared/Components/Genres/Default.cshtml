@@ -1,9 +1,13 @@
-﻿<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
+﻿@model IEnumerable<Genre>
+
+<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Türler
 </a>
+
 <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    @foreach (var genre in Model)
+    {
+        <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-genre="@genre.Id" asp-route-page="1">@genre.Name</a></li>
+    }
+
 </ul>

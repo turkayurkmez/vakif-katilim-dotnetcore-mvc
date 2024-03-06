@@ -17,12 +17,12 @@ namespace BookStore.MVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1, int? genre = null)
         {
 
-            var books = bookService.GetBooks();
+            var books = bookService.GetBooks(genre);
             var totalItems = books.Count();
-            var pageSize = 6;
+            var pageSize = 1;
             var totalPages = (int)Math.Ceiling((decimal)totalItems / pageSize);
 
             /*
@@ -44,6 +44,7 @@ namespace BookStore.MVC.Controllers
 
             ViewBag.ActivePage = page;
             ViewBag.TotalPages = totalPages;
+            ViewBag.SelectedGenre = genre;
 
             return View(paginatedBooks);
         }

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.Infrastructure.DataAcess.Repositories
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IGenreRepository : IRepository<Genre>
     {
-        IEnumerable<Book> Search(string name);
-        IEnumerable<Book> GetBooksByGenre(int genreId);
+
     }
 }
