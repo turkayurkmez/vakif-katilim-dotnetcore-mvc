@@ -5,6 +5,7 @@ namespace BookStore.Services
 {
     public interface IBookService
     {
-        IEnumerable<BookDisplayResponse> GetBooks(int? genreId = null);
+        IEnumerable<BookDisplayResponse> GetBooksForDisplay(int? genreId = null);
+        BookForAddToCard GetBookForAddToCard(int id);
     }
 }

@@ -10,6 +10,6 @@ namespace BookStore.Infrastructure.DataAcess.Repositories
     public interface IRepository<T> where T : class, IEntity, new()
     {
         IEnumerable<T> GetAllWithEnumerable();
-
+        T Get(int id);
     }
 }

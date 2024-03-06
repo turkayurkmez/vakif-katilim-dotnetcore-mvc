@@ -1,0 +1,39 @@
+﻿@model ShoppingCardCollection
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model.CardItems.Count == 0)
+{
+    <div class="alert alert-info">Sepetinizde henüz ürün yok</div>
+}
+else
+{
+    <table class="table table-hover table-striped">
+       <thead>
+           <tr>
+               <th>Ürün Adı</th>
+               <th>Fiyatı</th>
+               <th>Adet</th>
+               <th>Ara Toplam</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach (var item in Model.CardItems)
+            {
+                <tr>
+                    <td>@item.Book.Title</td>
+                    <td>@item.Book.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Quantity * item.Book.Price)</td>
+                </tr>
+            }
+       </tbody>
+       <tfoot>
+           <tr>
+               <td colspan="4">Toplam fiyat: @Model.GetTotalPrice() TL</td>
+           </tr>
+       </tfoot>
+    </table>
+}
+

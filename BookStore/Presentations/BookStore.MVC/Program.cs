@@ -11,6 +11,7 @@ builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IGenreRepository, FakeGenreRepository>();
 
 
+builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(3));
 
 var app = builder.Build();
 
@@ -24,6 +25,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();//.UseStaticFiles().UseRouting().UseAuthorization();
 app.UseStaticFiles();
+app.UseSession();
 
 app.UseRouting();
 

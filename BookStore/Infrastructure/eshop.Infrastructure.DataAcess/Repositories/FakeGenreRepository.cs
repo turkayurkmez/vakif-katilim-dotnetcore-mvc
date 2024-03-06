@@ -18,6 +18,12 @@ namespace BookStore.Infrastructure.DataAcess.Repositories
 
 
         };
+
+        public Genre Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Genre> GetAllWithEnumerable()
         {
             return _genreList;

@@ -20,9 +20,10 @@ namespace BookStore.MVC.Controllers
         public IActionResult Index(int page = 1, int? genre = null)
         {
 
-            var books = bookService.GetBooks(genre);
+            var books = bookService.GetBooksForDisplay(genre);
             var totalItems = books.Count();
-            var pageSize = 1;
+            var pageSize = 10;
+            var itemCountInARow = 6;
             var totalPages = (int)Math.Ceiling((decimal)totalItems / pageSize);
 
             /*
@@ -45,6 +46,7 @@ namespace BookStore.MVC.Controllers
             ViewBag.ActivePage = page;
             ViewBag.TotalPages = totalPages;
             ViewBag.SelectedGenre = genre;
+            ViewBag.ColumnSize = itemCountInARow;
 
             return View(paginatedBooks);
         }

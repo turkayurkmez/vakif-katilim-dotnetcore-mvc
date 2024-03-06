@@ -18,7 +18,21 @@ namespace BookStore.Services
             _bookRepository = bookRepository;
         }
 
-        public IEnumerable<BookDisplayResponse> GetBooks(int? genreId = null)
+        public BookForAddToCard GetBookForAddToCard(int id)
+        {
+            var book = _bookRepository.Get(id);
+            return new BookForAddToCard
+            {
+                Author = book.Author,
+                DiscountRate = book.DiscountRate,
+                Id = book.Id,
+                Price = book.Price,
+                Title = book.Title
+
+            };
+        }
+
+        public IEnumerable<BookDisplayResponse> GetBooksForDisplay(int? genreId = null)
         {
 
             var books = genreId == null ? _bookRepository.GetAllWithEnumerable() :

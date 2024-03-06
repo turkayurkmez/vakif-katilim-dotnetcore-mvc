@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Home Page";
     var active = string.Empty;
+    var columnValue = 12 / ViewBag.ColumnSize;
+    var counter = 0;
 }
 
 <div class="text-center">
@@ -10,12 +12,18 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row m-4">
         @foreach (var book in Model)
         {
-            <div class="col-2">
+            if (counter != 0 && counter % ViewBag.ColumnSize ==0)
+            {
+                @:</div>
+                @:<div class="row m-4">
+            }
+            <div class="col-@columnValue">
                <partial name="_BookSummary" model="book"></partial>
             </div>
+            counter++;
         }
     </div>
 </div>
@@ -30,3 +38,25 @@
         
     </ul>
 </nav>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.shop').on('click', function () {
+                let id = $(this).data('id');
+                $.ajax({
+                    url:'/Shopping/AddToCard/'+id,
+                    method:'GET',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+
+                });
+            });
+
+        });
+    </script>
+}
