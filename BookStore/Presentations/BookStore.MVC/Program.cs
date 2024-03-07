@@ -1,6 +1,7 @@
 using BookStore.Infrastructure.DataAcess.Data;
 using BookStore.Infrastructure.DataAcess.Repositories;
 using BookStore.Services;
+using BookStore.Services.MappingProfile;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IBookRepository, FakeBookRepository>();
+builder.Services.AddScoped<IBookRepository, EFBookRepository>();
 builder.Services.AddScoped<IGenreService, GenreService>();
-builder.Services.AddScoped<IGenreRepository, FakeGenreRepository>();
-
+builder.Services.AddScoped<IGenreRepository, EFGenreRepository>();
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(3));
 

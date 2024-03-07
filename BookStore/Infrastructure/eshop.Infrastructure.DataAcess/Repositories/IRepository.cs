@@ -11,5 +11,15 @@ namespace BookStore.Infrastructure.DataAcess.Repositories
     {
         IEnumerable<T> GetAllWithEnumerable();
         T Get(int id);
+
+        Task<IEnumerable<T>> GetAllWithEnumerableAsync();
+        Task<T> GetAsync(int id);
+
+        Task Create(T entity);
+        Task Update(T entity);
+        Task Delete(int id);
+
+        Task<bool> IsExistsAsync(int id);
+
     }
 }

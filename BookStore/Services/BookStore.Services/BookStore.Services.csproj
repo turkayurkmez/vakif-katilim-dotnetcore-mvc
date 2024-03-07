@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\eshop.Infrastructure.DataAcess\BookStore.Infrastructure.DataAcess.csproj" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataTransferObjects\Requests\" />
+    <ProjectReference Include="..\..\Infrastructure\eshop.Infrastructure.DataAcess\BookStore.Infrastructure.DataAcess.csproj" />
   </ItemGroup>
 
 </Project>

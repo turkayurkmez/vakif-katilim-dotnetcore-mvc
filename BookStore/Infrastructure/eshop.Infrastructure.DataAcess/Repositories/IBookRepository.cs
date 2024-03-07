@@ -11,5 +11,9 @@ namespace BookStore.Infrastructure.DataAcess.Repositories
     {
         IEnumerable<Book> Search(string name);
         IEnumerable<Book> GetBooksByGenre(int genreId);
+
+        Task<IEnumerable<Book>> SearchAsync(string name);
+        Task<IEnumerable<Book>> GetBooksByGenreAsync(int genreId);
+
     }
 }
