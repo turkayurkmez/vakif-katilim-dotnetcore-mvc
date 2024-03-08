@@ -7,7 +7,7 @@ using System.Collections;
 
 namespace BookStore.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Editor")]
     public class ProductsController : Controller
     {
         private readonly IBookService _bookService;
@@ -19,7 +19,7 @@ namespace BookStore.MVC.Controllers
             this.genreService = genreService;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
 
