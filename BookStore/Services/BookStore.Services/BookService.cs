@@ -105,6 +105,18 @@ namespace BookStore.Services
             return response;
         }
 
+        public async Task<bool> IsBookExists(int id)
+        {
+            return await _bookRepository.IsExistsAsync(id);
+        }
+
+        public async Task<IEnumerable<BookDisplayResponse>> SearchBooks(string name)
+        {
+            var books = await _bookRepository.SearchAsync(name);
+            return mapper.Map<IEnumerable<BookDisplayResponse>>(books);
+
+        }
+
         public async Task UpdateExistingBook(UpdateBookRequest updateBookRequest)
         {
             var book = mapper.Map<Book>(updateBookRequest);

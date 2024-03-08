@@ -1,6 +1,7 @@
 ﻿using BookStore.Common.Entities;
 using BookStore.MVC.Models;
 using BookStore.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -61,5 +62,15 @@ namespace BookStore.MVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult ChangeLanguage(string culture)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)), new CookieOptions() { Expires = DateTime.Now.AddMonths(1) });
+
+            return Redirect(Request.Headers["Referer"].ToString());
+
+        }
+
+
     }
 }

@@ -17,6 +17,7 @@ namespace BookStore.Services.MappingProfile
             CreateMap<CreateNewBookRequest, Book>();
             CreateMap<Book, BookForAddToCard>();
             CreateMap<UpdateBookRequest, Book>().ReverseMap();
+            CreateMap<Book, BookDisplayResponse>();
         }
     }
 }

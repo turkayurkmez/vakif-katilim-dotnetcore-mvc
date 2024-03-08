@@ -18,6 +18,8 @@ namespace BookStore.Services
         Task DeleteAsync(int id);
 
         Task<UpdateBookRequest> GetBookForUpdateRequestAsync(int id);
+        Task<IEnumerable<BookDisplayResponse>> SearchBooks(string name);
+        Task<bool> IsBookExists(int id);
 
     }
 }
